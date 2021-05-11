@@ -2,8 +2,12 @@ package in.jegan.validater;
 
 import in.jegan.model.Vegetable;
 
+
 public class VegetableManagerValidater {
-	
+	private VegetableManagerValidater()
+	{
+		//defaultconstructor;
+	}
 	public static boolean checkForNullandEmpty(Vegetable vegetable) {
 		return (vegetable.getVegetableName()!=null && !vegetable.getVegetableName().trim().equals(""));
 	}

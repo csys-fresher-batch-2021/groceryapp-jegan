@@ -1,15 +1,17 @@
 package in.jegan.service;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import in.jegan.model.Vegetable;
 import in.jegan.validater.VegetableManagerValidater;
 
 
 public class VegetableManager {
+	private VegetableManager()
+	{
+		//defaultconstructor;
+	}
 
-	private  static List<Vegetable> vegetableList = new ArrayList<Vegetable>();
+	private  static List<Vegetable> vegetableList = new ArrayList<>();
     
 	static
 	{
@@ -39,7 +41,6 @@ public class VegetableManager {
 				 added=true;
 			}
 		} catch (Exception e) {
-			added=false;
 		}
 
 		return added;
