@@ -3,7 +3,8 @@
 <%@page import="in.jegan.model.Vegetable"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="in.jegan.service.VegetableManager"%>
-<html>
+<!DOCTYPE>
+<html lang="en">
 <head>
 <title>GroceryApp</title>
 </head>
@@ -12,8 +13,9 @@
 	<main class="container-fluid">
 		<h3>List Of Vegetables</h3>
 		<table class="table table-bordered">
+		<caption>Tabulating List of Vegetables</caption>
 		<thead>
-		<tr><th>Sno</th> <th>Vegetable Name</th> <th>Price</th> <th>Quantity</th> </tr>
+		<tr><th id="col">Sno</th> <th id="col">Vegetable Name</th> <th id="col">Price</th> <th id="col">Quantity</th> </tr>
 		</thead>
 		<tbody>
 		<%

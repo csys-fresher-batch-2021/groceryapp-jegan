@@ -5,7 +5,7 @@ import in.jegan.model.Vegetable;
 public class VegetableManagerValidater {
 	
 	public static boolean checkForNullandEmpty(Vegetable vegetable) {
-		return (!vegetable.getVegetableName().equals(null) && vegetable.getVegetableName().trim() !="");
+		return (vegetable.getVegetableName()!=null && !vegetable.getVegetableName().trim().equals(""));
 	}
 	
 	public static boolean checkNotNumeric(Vegetable vegetable) {
@@ -19,6 +19,6 @@ public class VegetableManagerValidater {
 	
 	public static boolean checkForQuantityInvalidNumandNull(Vegetable vegetable)
 	{
-		return vegetable.getQuantity() > 0 && (!vegetable.getQuantity().equals(null));
+		return (vegetable.getQuantity() > 0 && vegetable.getQuantity() != null);
 	}
 }
