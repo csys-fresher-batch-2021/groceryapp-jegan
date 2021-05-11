@@ -58,7 +58,7 @@ public class AddVegetableManagerTest {
 	}
 	
 	/**
-	 * This method is used to testinvalid price
+	 * This method is used to test invalid price
 	 */
 	@Test
 	public void testForInvalidPriceInput()

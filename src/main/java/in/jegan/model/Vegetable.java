@@ -2,10 +2,39 @@ package in.jegan.model;
 
 public class Vegetable {
 
-	public String vegetableName;
-	public Integer price;
-	public Integer quantity;
+	private String vegetableName;
+	private Integer price;
+	private Integer quantity;
 	
+	public String getVegetableName()
+	{
+		return vegetableName;
+	}
+	
+	public void setVegetableName(String vegetableName)
+	{
+		this.vegetableName = vegetableName;
+	}
+	
+	public Integer getPrice()
+	{
+		return price;
+	}
+	
+	public void setPrice(Integer price)
+	{
+		this.price = price;
+	}
+	
+	public Integer getQuantity()
+	{
+		return quantity;
+	}
+	
+	public void setQuantity(Integer quantity)
+	{
+		this.quantity = quantity;
+	}
 	public Vegetable(String vegetableName , Integer price , Integer quantity)
 	{
 		this.vegetableName=vegetableName;

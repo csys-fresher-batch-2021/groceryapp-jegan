@@ -1,6 +1,7 @@
 package in.jegan.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import in.jegan.model.Vegetable;
 import in.jegan.validater.VegetableManagerValidater;
@@ -8,8 +9,21 @@ import in.jegan.validater.VegetableManagerValidater;
 
 public class VegetableManager {
 
-	public  static ArrayList<Vegetable> vegetableList = new ArrayList<Vegetable>();
+	private  static List<Vegetable> vegetableList = new ArrayList<Vegetable>();
+    
+	static
+	{
+		vegetableList.add(new Vegetable("Tomato", 50, 35));
+		vegetableList.add(new Vegetable("Carrot", 35, 25));
+		vegetableList.add(new Vegetable("Potato", 25, 15));
 
+		
+	}
+	
+	public static List<Vegetable> getVegetableList() {
+		return vegetableList;
+	}
+    
 	/**
 	 * This method is used to add vegetables and returns true only the given conditions are true otherwise returns false
 	 * @param vegetable
