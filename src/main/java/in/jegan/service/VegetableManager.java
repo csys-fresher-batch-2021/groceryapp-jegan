@@ -2,16 +2,16 @@ package in.jegan.service;
 import java.util.ArrayList;
 import java.util.List;
 import in.jegan.model.Vegetable;
-import in.jegan.validater.VegetableManagerValidater;
+import in.jegan.validator.VegetableManagerValidator;
 
 
 public class VegetableManager {
 	private VegetableManager()
 	{
-		//defaultconstructor;
+		//defaultconstructor
 	}
 
-	private  static List<Vegetable> vegetableList = new ArrayList<>();
+	private  static final List<Vegetable> vegetableList = new ArrayList<>();
     
 	static
 	{
@@ -35,16 +35,41 @@ public class VegetableManager {
 	{
 		boolean added = false;
 		try {
-			if(VegetableManagerValidater.checkForNullandEmpty(vegetable) && VegetableManagerValidater.checkNotNumeric(vegetable)  && VegetableManagerValidater.checkForPriceInvalidNumandNull(vegetable) && VegetableManagerValidater.checkForQuantityInvalidNumandNull(vegetable))
+			if(VegetableManagerValidator.checkForNullandEmpty(vegetable) && VegetableManagerValidator.checkNotNumeric(vegetable)  && VegetableManagerValidator.checkForPriceInvalidNumandNull(vegetable) && VegetableManagerValidator.checkForQuantityInvalidNumandNull(vegetable))
 			{
 				vegetableList.add(vegetable);
 				 added=true;
 			}
+			else {
+				System.out.println("Validation Failed");
+			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
 		return added;
 	}
-
+    
+	public static boolean deleteVegetable(String vegtableName)
+	{
+		boolean isDeleted = false;
+		Vegetable searchVegetable = null;
+		
+		for(Vegetable vegetableName : vegetableList)
+		{
+			if(vegetableName.getVegetableName().equalsIgnoreCase(vegtableName))
+					
+			{
+				searchVegetable = vegetableName;
+				break;
+			}
+		}
+		if(searchVegetable != null)
+		{
+			vegetableList.remove(searchVegetable);
+			isDeleted = true;
+		}
+		return isDeleted;
+		
+	}
 
 }

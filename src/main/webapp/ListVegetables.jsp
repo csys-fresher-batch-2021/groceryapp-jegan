@@ -13,7 +13,7 @@
 	<main class="container-fluid">
 		<h3>List Of Vegetables</h3>
 		<table class="table table-bordered">
-		<caption>Tabulating List of Vegetables</caption>
+		<caption>Showing the List of Vegetables</caption>
 		<thead>
 		<tr><th id="col">Sno</th> <th id="col">Vegetable Name</th> <th id="col">Price</th> <th id="col">Quantity</th> </tr>
 		</thead>
@@ -30,11 +30,13 @@
 		<td><%=i %></td> <td><%=vegetable.getVegetableName() %> </td> 
 		<td>Rs.<%=vegetable.getPrice() %></td> 
 		<td><%=vegetable.getQuantity() %></td>
+		<td><a href="DeleteVegetableServlet?vegetableName=<%= vegetable.getVegetableName()%>" class= "btn btn-danger">Delete</a></td>
 		</tr>
 		
 		<% } %>
 		</tbody>
 		</table>
+		<a class="btn btn-secondary" href="addVegetable.jsp">Add Product</a>
 	</main>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package in.jegan.Tester;
+package in.jegan.test;
 
 
 import static org.junit.Assert.assertFalse;
@@ -72,7 +72,7 @@ public class AddVegetableManagerTest {
 	 * This method is used to test invalid quantity value
 	 */
 	@Test
-	public void testForInvalidquantityInput()
+	public void testForInvalidQuantityInput()
 	{
 		Vegetable vegetable = new Vegetable("Tomato", 50, -1);
 		boolean added= VegetableManager.addVegetables(vegetable);
