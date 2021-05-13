@@ -13,14 +13,6 @@ public class VegetableManager {
 
 	private  static final List<Vegetable> vegetableList = new ArrayList<>();
     
-	static
-	{
-		vegetableList.add(new Vegetable("Tomato", 50, 35));
-		vegetableList.add(new Vegetable("Carrot", 35, 25));
-		vegetableList.add(new Vegetable("Potato", 25, 15));
-
-		
-	}
 	
 	public static List<Vegetable> getVegetableList() {
 		return vegetableList;
@@ -37,6 +29,7 @@ public class VegetableManager {
 		try {
 			if(VegetableManagerValidator.checkForNullandEmpty(vegetable) && VegetableManagerValidator.checkNotNumeric(vegetable)  && VegetableManagerValidator.checkForPriceInvalidNumandNull(vegetable) && VegetableManagerValidator.checkForQuantityInvalidNumandNull(vegetable))
 			{
+				
 				vegetableList.add(vegetable);
 				 added=true;
 			}
@@ -48,28 +41,14 @@ public class VegetableManager {
 		}
 		return added;
 	}
-    
-	public static boolean deleteVegetable(String vegtableName)
+	
+	/**
+	 * This method is used for display the vegetableList
+	 * @return 
+	 */
+	public static List<Vegetable> showVegetable()
 	{
-		boolean isDeleted = false;
-		Vegetable searchVegetable = null;
-		
-		for(Vegetable vegetableName : vegetableList)
-		{
-			if(vegetableName.getVegetableName().equalsIgnoreCase(vegtableName))
-					
-			{
-				searchVegetable = vegetableName;
-				break;
-			}
-		}
-		if(searchVegetable != null)
-		{
-			vegetableList.remove(searchVegetable);
-			isDeleted = true;
-		}
-		return isDeleted;
-		
+		return vegetableList;
 	}
 
 }
