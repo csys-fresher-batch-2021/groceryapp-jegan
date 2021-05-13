@@ -1,5 +1,7 @@
 package in.jegan.validator;
 
+
+
 import in.jegan.model.Vegetable;
 
 
@@ -8,6 +10,7 @@ public class VegetableManagerValidator {
 	{
 		//defaultconstructor
 	}
+	
 	public static boolean checkForNullandEmpty(Vegetable vegetable) {
 		return (vegetable.getVegetableName()!=null && !vegetable.getVegetableName().trim().equals(""));
 	}
@@ -23,6 +26,6 @@ public class VegetableManagerValidator {
 	
 	public static boolean checkForQuantityInvalidNumandNull(Vegetable vegetable)
 	{
-		return (vegetable.getQuantity() > 0 && vegetable.getQuantity() != null);
+		return (vegetable.getQuantity() > 0 && vegetable.getQuantity() != 0);
 	}
 }

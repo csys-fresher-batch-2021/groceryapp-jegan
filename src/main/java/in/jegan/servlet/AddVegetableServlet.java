@@ -21,8 +21,7 @@ public class AddVegetableServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
-		//System.out.println("AddVegetableServlet");
+		PrintWriter  out = response.getWriter();
 		
 		String vegetableName = request.getParameter("vegetableName");
 		Integer vegetablePrice = Integer.parseInt(request.getParameter("vegetablePrice"));
