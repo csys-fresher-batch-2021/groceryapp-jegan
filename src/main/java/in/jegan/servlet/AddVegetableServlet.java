@@ -1,7 +1,7 @@
 package in.jegan.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,20 +18,15 @@ import in.jegan.service.VegetableManager;
 @WebServlet("/AddProductServlet")
 public class AddVegetableServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     @Override  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		PrintWriter  out = response.getWriter();
-		
+	   
 		String vegetableName = request.getParameter("vegetableName");
 		Integer vegetablePrice = Integer.parseInt(request.getParameter("vegetablePrice"));
 		Integer vegetableQuantity = Integer.parseInt(request.getParameter("vegetableQuantity"));
-		System.out.println(vegetableName);
-		System.out.println(vegetablePrice);
-		System.out.println(vegetableQuantity);
 		Vegetable vegetableList = new Vegetable(vegetableName, vegetablePrice , vegetableQuantity);
-		try
-		{ 
+	    try
+		{
 			boolean isAdded=VegetableManager.addVegetables(vegetableList);
 			
 			if(isAdded)

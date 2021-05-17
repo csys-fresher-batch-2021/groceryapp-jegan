@@ -30,6 +30,7 @@
 		<td><%=i %></td> <td><%=vegetable.getVegetableName() %> </td> 
 		<td>Rs.<%=vegetable.getPrice() %></td> 
 		<td><%=vegetable.getQuantity() %></td>
+		<td><a href="DeleteVegetableServlet?vegetableName=<%=vegetable.getVegetableName()%>" class="btn btn-danger">Delete</a>
 		</tr>
 		
 		<% } %>
