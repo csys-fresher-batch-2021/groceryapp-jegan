@@ -33,9 +33,6 @@ public class VegetableManager {
 				vegetableList.add(vegetable);
 				 added=true;
 			}
-			else {
-				System.out.println("Validation Failed");
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,6 +46,29 @@ public class VegetableManager {
 	public static List<Vegetable> showVegetable()
 	{
 		return vegetableList;
+	}
+	
+	public static boolean deleteVegetable(String vegtableName)
+	{
+		boolean isDeleted = false;
+		Vegetable searchVegetable = null;
+		
+		for(Vegetable vegetableName : vegetableList)
+		{
+			if(vegetableName.getVegetableName().equalsIgnoreCase(vegtableName))
+					
+			{
+				searchVegetable = vegetableName;
+				break;
+			}
+		}
+		if(searchVegetable != null)
+		{
+			vegetableList.remove(searchVegetable);
+			isDeleted = true;
+		}
+		return isDeleted;
+		
 	}
 
 }

@@ -10,7 +10,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid"></main>
 
-	<h1>Add Product</h1>
+	<h1>Add Vegetable</h1>
 	<form action="AddProductServlet" method=get>
 		<label for="vegetableName">Vegetable Name : </label> <input
 			type="text" name="vegetableName"

@@ -2,6 +2,8 @@ package in.jegan.test;
 
 
 
+import static org.junit.Assert.assertNull;
+
 import org.junit.Test;
 
 import in.jegan.model.Vegetable;
@@ -20,7 +22,7 @@ public class ShowVegetableManagerTest {
 		VegetableManager.addVegetables(vegetable1);
 		VegetableManager.addVegetables(vegetable2);
 	    VegetableManager.showVegetable();
-	     
+	    assertNull(vegetable1);
 		
 	}
 }
