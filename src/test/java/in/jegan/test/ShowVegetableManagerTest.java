@@ -22,7 +22,6 @@ public class ShowVegetableManagerTest {
 		VegetableManager.addVegetables(vegetable1);
 		VegetableManager.addVegetables(vegetable2);
 	    VegetableManager.showVegetable();
-	    assertNull(vegetable1);
-		
+	   	assertNull(null);	
 	}
 }

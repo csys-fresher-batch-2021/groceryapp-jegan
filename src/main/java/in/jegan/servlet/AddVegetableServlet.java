@@ -21,31 +21,30 @@ public class AddVegetableServlet extends HttpServlet {
      @Override  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   
-		String vegetableName = request.getParameter("vegetableName");
-		Integer vegetablePrice = Integer.parseInt(request.getParameter("vegetablePrice"));
-		Integer vegetableQuantity = Integer.parseInt(request.getParameter("vegetableQuantity"));
-		Vegetable vegetableList = new Vegetable(vegetableName, vegetablePrice , vegetableQuantity);
-	    try
-		{
-			boolean isAdded=VegetableManager.addVegetables(vegetableList);
-			
-			if(isAdded)
-			{
-				response.sendRedirect("ListVegetables.jsp");
+		try {
+			String vegetableName = request.getParameter("vegetableName");
+			Integer vegetablePrice = Integer.parseInt(request.getParameter("vegetablePrice"));
+			Integer vegetableQuantity = Integer.parseInt(request.getParameter("vegetableQuantity"));
+			Vegetable vegetableList = new Vegetable(vegetableName, vegetablePrice , vegetableQuantity);
+				boolean isAdded=VegetableManager.addVegetables(vegetableList);
+				
+				if(isAdded)
+				{
+					response.sendRedirect("ListVegetables.jsp");
+				}
+				else
+				{
+					String errorMessage = "Unable to add Vegetable Name , price , quantity";
+					response.sendRedirect("addVegetable.jsp?errorMessage" + errorMessage);
+				}
+				
 			}
-			else
+			catch(RuntimeException e)
 			{
-				String errorMessage = "Unable to add Vegetable Name , price , quantity";
+				String errorMessage = e.getMessage();
 				response.sendRedirect("addVegetable.jsp?errorMessage" + errorMessage);
+				e.printStackTrace();
 			}
-			
-		}
-		catch(RuntimeException e)
-		{
-			String errorMessage = e.getMessage();
-			response.sendRedirect("addVegetable.jsp?errorMessage" + errorMessage);
-			e.printStackTrace();
-		}
+		} 
 
 	}
-}
