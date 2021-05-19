@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-
+<%
+String userEmail = (String)session.getAttribute("userEmail");
+%>
 <header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="index.jsp">GroceryApp</a>
@@ -30,12 +32,23 @@
       </li>
     </ul>
      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+     <%if (userEmail == null) {%>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="userRegistration.jsp">Register</a>
+        
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="userRegistration.jsp">Register</a>
+        <a class="nav-link" href="userLogin.jsp">Login</a>
       </li>
+      <%}else { %>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Welcome <%=userEmail %></a>
+        
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="LogoutServlet">Logout</a>
+      </li>
+      <%} %>
       </ul>
    
   </div>

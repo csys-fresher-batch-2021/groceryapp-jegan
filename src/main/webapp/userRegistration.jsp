@@ -7,6 +7,9 @@
 <title>Registration</title>
 </head>
 <body>
+   <jsp:include page="header.jsp"></jsp:include>
+	<main class="container-fluid"></main>
+
    <h1>User Registration</h1>
    <form action="RegistrartionServlet" method=post>
    <label for="userName">User Name : </label> 
