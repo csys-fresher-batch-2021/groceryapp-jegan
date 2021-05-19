@@ -21,30 +21,29 @@ public class UserLoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-			String userEmail = request.getParameter("userEmail");
-			String passWord = request.getParameter("passWord");
-			
 			try {
-				boolean isValidUser = LoginManager.login(userEmail, passWord);
-				if(isValidUser)
-				{
-					HttpSession session = request.getSession();
-					session.setAttribute("userEmail", userEmail);
-					response.sendRedirect("addVegetable.jsp");
-				}
-				else
-				{
-					String errorMessage = "Invalid Login Credentials";
+				String userEmail = request.getParameter("userEmail");
+				String passWord = request.getParameter("passWord");
+				
+					boolean isValidUser = LoginManager.login(userEmail, passWord);
+					if(isValidUser)
+					{
+						HttpSession session = request.getSession();
+						session.setAttribute("userEmail", userEmail);
+						response.sendRedirect("addVegetable.jsp");
+					}
+					else
+					{
+						String errorMessage = "Invalid Login Credentials";
+						response.sendRedirect("userLogin.jsp?errorMessage" + errorMessage);
+
+					}
+				} catch (RuntimeException e) {
+					String errorMessage = e.getMessage();
 					response.sendRedirect("userLogin.jsp?errorMessage" + errorMessage);
-		
+					e.printStackTrace();
 				}
-			} catch (RuntimeException e) {
-				String errorMessage = "Invalid Login Credentials";
-				response.sendRedirect("userLogin.jsp?errorMessage" + errorMessage);
-				e.printStackTrace();
-			}
-		
-		
+			} 		
 	}
 
-}
+
