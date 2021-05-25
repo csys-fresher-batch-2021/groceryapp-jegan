@@ -1,6 +1,10 @@
 package in.jegan.service;
 import java.util.ArrayList;
 import java.util.List;
+
+import in.jegan.dao.VegetableDAO;
+import in.jegan.exception.DBExceptions;
+import in.jegan.exception.ServiceException;
 import in.jegan.model.Vegetable;
 import in.jegan.validator.VegetableManagerValidator;
 
@@ -29,12 +33,13 @@ public class VegetableManager {
 		try {
 			if(VegetableManagerValidator.checkForNullandEmpty(vegetable) && VegetableManagerValidator.checkNotNumeric(vegetable)  && VegetableManagerValidator.checkForPriceInvalidNumandNull(vegetable) && VegetableManagerValidator.checkForQuantityInvalidNumandNull(vegetable))
 			{
-				
-				vegetableList.add(vegetable);
+				VegetableDAO dao=new VegetableDAO();
+				dao.addVegetable(vegetable);
 				 added=true;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new SecurityException("unable to add vegetables");
 		}
 		return added;
 	}
@@ -45,30 +50,41 @@ public class VegetableManager {
 	 */
 	public static List<Vegetable> showVegetable()
 	{
-		return vegetableList;
+		VegetableDAO dao = new VegetableDAO();
+		return dao.showVegetable();
 	}
 	
 	public static boolean deleteVegetable(String vegtableName)
 	{
 		boolean isDeleted = false;
 		Vegetable searchVegetable = null;
-	
-		for(Vegetable vegetableName : vegetableList)
-		{
-			if(vegetableName.getVegetableName().equalsIgnoreCase(vegtableName))
-					
+	    try {
+			VegetableDAO dao = new VegetableDAO();
+			List<Vegetable> vegetable = dao.showVegetable();
+			for(Vegetable vegetableName : vegetable)
 			{
-				searchVegetable = vegetableName;
-				break;
+				if(vegetableName.getVegetableName().equalsIgnoreCase(vegtableName))
+						
+				{
+					searchVegetable = vegetableName;
+					break;
+				}
 			}
-		}
-		if(searchVegetable != null)
-		{
-			vegetableList.remove(searchVegetable);
-			isDeleted = true;
+			if(searchVegetable != null)
+			{
+				dao.deleteVegetable(searchVegetable);
+				vegetableList.remove(searchVegetable);
+				isDeleted = true;
+			}
+			else
+			{
+				throw new ServiceException("unable to delete vegetable from database");
+			}
+		} catch (DBExceptions e) {
+			e.printStackTrace();
+			throw new ServiceException("unable to delete vegetable from database");
 		}
 		return isDeleted;
-		
 	}
 
 }
