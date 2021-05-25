@@ -19,7 +19,7 @@
 		</thead>
 		<tbody>
 		<%
-		List<Vegetable> vegetableList =VegetableManager.getVegetableList();
+		List<Vegetable> vegetableList =VegetableManager.showVegetable();
 		int i=0;
 		for(Vegetable vegetable : vegetableList )
 		{

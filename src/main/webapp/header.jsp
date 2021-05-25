@@ -16,13 +16,14 @@ String userEmail = (String)session.getAttribute("userEmail");
       <li class="nav-item active">
         <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
-      
+      <% if(userEmail != null) {%>
       <li class="nav-item">
         <a class="nav-link" href="addVegetable.jsp">Add Vegetables</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="ListVegetables.jsp">Vegetables</a>
       </li>
+      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu" aria-labelledby="dropdownId">
@@ -30,6 +31,7 @@ String userEmail = (String)session.getAttribute("userEmail");
           <a class="dropdown-item" href="#">Action 2</a>
         </div>
       </li>
+      <%} %>
     </ul>
      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
      <%if (userEmail == null) {%>
