@@ -11,6 +11,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+	<%String role=(String)session.getAttribute("ROLE");%>
 		<h3>List Of Vegetables</h3>
 		<table class="table table-bordered">
 		<caption>Showing the List of Vegetables</caption>
@@ -30,10 +31,13 @@
 		<td><%=i %></td> <td><%=vegetable.getVegetableName() %> </td> 
 		<td>Rs.<%=vegetable.getPrice() %></td> 
 		<td><%=vegetable.getQuantity() %></td>
+		<% if(role!=null && role.equalsIgnoreCase("admin")){%>
 		<td><a href="DeleteVegetableServlet?vegetableName=<%=vegetable.getVegetableName()%>" class="btn btn-danger">Delete</a>
+		</td>
+		<%} %>
 		</tr>
-		
 		<% } %>
+		
 		</tbody>
 		</table>
 		<a class="btn btn-secondary" href="addVegetable.jsp">Add Product</a>

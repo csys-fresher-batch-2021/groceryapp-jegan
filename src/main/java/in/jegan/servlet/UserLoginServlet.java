@@ -30,7 +30,7 @@ public class UserLoginServlet extends HttpServlet {
 					{
 						HttpSession session = request.getSession();
 						session.setAttribute("userEmail", userEmail);
-						response.sendRedirect("addVegetable.jsp");
+						response.sendRedirect("ListVegetables.jsp");
 					}
 					else
 					{
