@@ -13,6 +13,7 @@ import in.jegan.util.CloseUtil;
 import in.jegan.util.ConnectionUtil;
 
 public class VegetableDAO {
+	
 	/**
 	 * This method is used to add vegetables in database
 	 * @param vegetable

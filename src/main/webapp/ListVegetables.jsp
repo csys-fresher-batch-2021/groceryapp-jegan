@@ -30,7 +30,7 @@
 		<tr>
 		<td><%=i %></td> <td><%=vegetable.getVegetableName() %> </td> 
 		<td>Rs.<%=vegetable.getPrice() %></td> 
-		<td><%=vegetable.getQuantity() %></td>
+		<td><%=vegetable.getQuantity() %> kg</td>
 		<% if(role!=null && role.equalsIgnoreCase("admin")){%>
 		<td><a href="DeleteVegetableServlet?vegetableName=<%=vegetable.getVegetableName()%>" class="btn btn-danger">Delete</a>
 		</td>
