@@ -3,6 +3,10 @@ package in.jegan.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.jegan.dao.RegistrationDAO;
+import in.jegan.exception.DBExceptions;
+import in.jegan.exception.RegistrationManagerException;
+import in.jegan.exception.ServiceException;
 import in.jegan.model.Registration;
 import in.jegan.validator.RegistrationManagerValidator;
 
@@ -37,12 +41,14 @@ public class RegistrationManager {
 		try {
 			if (validUserName && validPassword && validEmail && validMobileNumber) 
 			{
-				userDetails.add(registration);
+				RegistrationDAO dao = new RegistrationDAO();
+				dao.addUser(registration);
 				validUser = true;
 			}
 			
-		} catch (Exception e) {
+		} catch (DBExceptions | RegistrationManagerException e) {
 			e.printStackTrace();
+			throw new ServiceException(" unable to register");
 		}
 		return validUser;
 	}

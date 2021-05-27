@@ -5,6 +5,7 @@ import java.util.List;
 import in.jegan.dao.VegetableDAO;
 import in.jegan.exception.DBExceptions;
 import in.jegan.exception.ServiceException;
+import in.jegan.exception.VegetableManagerException;
 import in.jegan.model.Vegetable;
 import in.jegan.validator.VegetableManagerValidator;
 
@@ -37,9 +38,9 @@ public class VegetableManager {
 				dao.addVegetable(vegetable);
 				 added=true;
 			}
-		} catch (Exception e) {
+		} catch (DBExceptions | VegetableManagerException e) {
 			e.printStackTrace();
-			throw new SecurityException("unable to add vegetables");
+			throw new ServiceException("unable to add vegetables");
 		}
 		return added;
 	}
