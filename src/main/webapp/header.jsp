@@ -33,11 +33,9 @@ String role=(String)session.getAttribute("ROLE");
         </div>
       </li>
       <%} %>
-       <%if(userEmail !=null){%>
        <li class="nav-item">
         <a class="nav-link" href="ListVegetables.jsp">Vegetables</a>
       </li>
-      <%} %>
     </ul>
      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
      <%if (userEmail == null && role==null) {%>
