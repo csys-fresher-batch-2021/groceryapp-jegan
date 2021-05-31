@@ -16,7 +16,13 @@
 		<table class="table table-bordered">
 		<caption>Showing the List of Vegetables</caption>
 		<thead>
-		<tr><th id="col">Sno</th> <th id="col">Vegetable Name</th> <th id="col">Price</th> <th id="col">Quantity</th> </tr>
+		<tr><th id="col">Sno</th> <th id="col">Vegetable Name</th> <th id="col">Price(per kg)</th> 
+	    <% if(role!=null && role.equalsIgnoreCase("admin")){%>
+		<th id="col">Quantity</th><th id="col">Delete</th>
+		<%} %>
+		 <% if(role!=null && !role.equalsIgnoreCase("admin")){%>
+		 <th id="col">Book</th> </tr>
+		 <%} %>
 		</thead>
 		<tbody>
 		<%
@@ -28,10 +34,15 @@
 		%>
 		
 		<tr>
-		<td><%=i %></td> <td><%=vegetable.getVegetableName() %> </td> 
+		<td><%=i %></td>
+		 <td><%=vegetable.getVegetableName() %> </td> 
 		<td>Rs.<%=vegetable.getPrice() %></td> 
+		 <% if(role!=null && !role.equalsIgnoreCase("admin")){%>
+		 		<td><a href="order.jsp?name=<%=vegetable.getVegetableName()%>&&price=<%=vegetable.getPrice() %>" class="btn btn-secondary">order now</a></td>
+		 
+		 <%} %>
+		 <% if(role!=null && role.equalsIgnoreCase("admin")){%>
 		<td><%=vegetable.getQuantity() %> kg</td>
-		<% if(role!=null && role.equalsIgnoreCase("admin")){%>
 		<td><a href="DeleteVegetableServlet?vegetableName=<%=vegetable.getVegetableName()%>" class="btn btn-danger">Delete</a>
 		</td>
 		<%} %>
@@ -40,7 +51,9 @@
 		
 		</tbody>
 		</table>
+		<% if(role!=null && role.equalsIgnoreCase("admin")){%>
 		<a class="btn btn-secondary" href="addVegetable.jsp">Add Product</a>
+		<%} %>
 	</main>
 </body>
 </html>
