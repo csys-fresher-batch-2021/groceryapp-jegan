@@ -8,6 +8,8 @@
 </head>
 <body>
      <jsp:include page="header.jsp"></jsp:include>
+          <jsp:include page="message.jsp"></jsp:include>
+     
 	<main class="container-fluid"></main>
 
      <h1>User Login</h1>

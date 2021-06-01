@@ -1,9 +1,10 @@
 package in.jegan.service;
 
-import java.util.HashMap;
-import java.util.Map;
 
-import in.jegan.validator.AdminManagerValidator;
+
+
+import in.jegan.dao.LoginDAO;
+import in.jegan.exception.ServiceException;
 
 public class AdminLoginManager {
 	private AdminLoginManager()
@@ -11,31 +12,32 @@ public class AdminLoginManager {
 		//default constructor
 	}
 	
-	private static final Map<String, String> adminDetail = new HashMap<>();
-	static {
-		adminDetail.put("jegan@gmail.com", "Admin@123");
-		adminDetail.put("john@gmail.com", "Admin@123");
-	}
+	
 
 	/**
-	 * This method is used to check whether mobile number and password are correct
+	 * This method is used for admin login
 	 * 
 	 * @param mobileNumber
 	 * @param password
 	 * @return
 	 */
 
-	public static boolean adminLogin(String email, String password) {
-		boolean validLogin = false;
-		if (AdminManagerValidator.validateUserEmail(email) && AdminManagerValidator.validateUserPassWord(password)
-				&& adminDetail.containsKey(email)) {
-			String adminPassword = adminDetail.get(email);
-			if (adminPassword.equals(password)) {
-				validLogin = true;
-			}
+	public static boolean adminlogin(String email, String password) {
+
+		boolean loginDao;
+		
+		try {
+			LoginDAO dao = new LoginDAO();
+			loginDao = dao.adminLoginDao(email, password);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ServiceException("unable to login");
 		}
-		return validLogin;
+		
+        return loginDao;
+	}
+
 }
-}
+
 
 

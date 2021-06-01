@@ -38,7 +38,7 @@
 		 <td><%=vegetable.getVegetableName() %> </td> 
 		<td>Rs.<%=vegetable.getPrice() %></td> 
 		 <% if(role!=null && !role.equalsIgnoreCase("admin")){%>
-		 		<td><a href="order.jsp?name=<%=vegetable.getVegetableName()%>&&price=<%=vegetable.getPrice() %>" class="btn btn-secondary">order now</a></td>
+		 		<td><button>order now</button></td>
 		 
 		 <%} %>
 		 <% if(role!=null && role.equalsIgnoreCase("admin")){%>
