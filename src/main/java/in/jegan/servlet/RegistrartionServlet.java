@@ -31,18 +31,19 @@ public class RegistrartionServlet extends HttpServlet {
 				boolean isValidUser = RegistrationManager.addUser(userDetails);
 				if(isValidUser)
 				{
-					response.sendRedirect("registrationDetails.jsp");
+					String infoMessage = "Succesfully registered";
+					response.sendRedirect("registrationDetails.jsp?=" + infoMessage);
 					
 				}
 				else
 				{
 					String errorMessage = "Unable to add User Details";
-					response.sendRedirect("userRegistration.jsp?errorMessage" + errorMessage);
+					response.sendRedirect("userRegistration.jsp?errorMessage=" + errorMessage);
 				}
 			}
 		    catch (RuntimeException e) {
 				String errorMessage = e.getMessage();
-				response.sendRedirect("userRegistration.jsp?errorMessage" + errorMessage);
+				response.sendRedirect("userRegistration.jsp?errorMessage=" + errorMessage);
 				e.printStackTrace();
 			}
 		} 

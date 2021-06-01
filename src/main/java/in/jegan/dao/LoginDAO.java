@@ -45,5 +45,33 @@ public class LoginDAO {
 		
 	}
 	
+	public boolean adminLoginDao(String userEmail,String password)
+	{
+		boolean valid = false;
+		Connection connection = null;
+		PreparedStatement pst = null;
+		try {
+			connection=ConnectionUtil.getConnection();
+			String sql="select * from employees where userEmail=? AND password=?";
+			pst=connection.prepareStatement(sql);
+			pst.setString(1, userEmail);
+			pst.setString(2, password);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next())
+			{
+				valid = true;
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			throw new DBExceptions("unable to fetch details from database"+e.getMessage());
+		}
+		 finally {
+				CloseUtil.close(pst, connection);
+		}
+		return valid;
+
+		
+	}
+	
 
 }

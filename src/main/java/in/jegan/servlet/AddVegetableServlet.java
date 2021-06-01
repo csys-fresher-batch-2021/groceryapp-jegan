@@ -30,19 +30,20 @@ public class AddVegetableServlet extends HttpServlet {
 				
 				if(isAdded)
 				{
-					response.sendRedirect("ListVegetables.jsp");
+					String infoMessage = "Successfully added";
+					response.sendRedirect("ListVegetables.jsp?infoMessage=" + infoMessage);
 				}
 				else
 				{
-					String errorMessage = "Unable to add Vegetable Name , price , quantity";
-					response.sendRedirect("addVegetable.jsp?errorMessage" + errorMessage);
+					String errorMessage = "Unable to add Vegetable details";
+					response.sendRedirect("addVegetable.jsp?errorMessage=" + errorMessage);
 				}
 				
 			}
 			catch(RuntimeException e)
 			{
 				String errorMessage = e.getMessage();
-				response.sendRedirect("addVegetable.jsp?errorMessage" + errorMessage);
+				response.sendRedirect("addVegetable.jsp?errorMessage=" + errorMessage);
 				e.printStackTrace();
 			}
 		} 

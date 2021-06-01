@@ -23,23 +23,24 @@ public class AdminLoginServlet extends HttpServlet {
     	try {
 			String adminEmail = request.getParameter("userEmail");
 			String passWord = request.getParameter("passWord");
-			boolean isValid = AdminLoginManager.adminLogin(adminEmail, passWord);
+			boolean isValid = AdminLoginManager.adminlogin(adminEmail, passWord);
 			
 			if(isValid)
 			{
 				HttpSession session = request.getSession();
 				session.setAttribute("ROLE", "ADMIN");
-				response.sendRedirect("addVegetable.jsp");
+				String infoMessage = "Successfully logged in";
+				response.sendRedirect("addVegetable.jsp?infoMessage=" + infoMessage);
 			}
 			else
 			{
 				String errorMessage = "Invalid Login Credentials";
-				response.sendRedirect("adminLogin.jsp?errorMessage" + errorMessage);
+				response.sendRedirect("adminLogin.jsp?errorMessage=" + errorMessage);
 
 			}
 		} catch (Exception e) {
 			String errorMessage = e.getMessage();
-			response.sendRedirect("adminLogin.jsp?errorMessage" + errorMessage);
+			response.sendRedirect("adminLogin.jsp?errorMessage=" + errorMessage);
 			e.printStackTrace();
 	} 		
 		}
