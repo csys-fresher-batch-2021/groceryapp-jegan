@@ -38,13 +38,13 @@
 		 <td><%=vegetable.getVegetableName() %> </td> 
 		<td>Rs.<%=vegetable.getPrice() %></td> 
 		 <% if(role!=null && !role.equalsIgnoreCase("admin")){%>
-		 		<td><button>order now</button></td>
+		 		<td><a href="order.jsp?name=<%=vegetable.getVegetableName()%>&price=<%=vegetable.getPrice()%>" class="btn btn-primary">add to cart</a> </td>
 		 
 		 <%} %>
 		 <% if(role!=null && role.equalsIgnoreCase("admin")){%>
 		<td><%=vegetable.getQuantity() %> kg</td>
 		<td><a href="DeleteVegetableServlet?vegetableName=<%=vegetable.getVegetableName()%>" class="btn btn-danger">Delete</a>
-		</td>
+		</td> 
 		<%} %>
 		</tr>
 		<% } %>
