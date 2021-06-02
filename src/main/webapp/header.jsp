@@ -21,7 +21,6 @@ String role=(String)session.getAttribute("ROLE");
       <li class="nav-item">
         <a class="nav-link" href="addVegetable.jsp">Add Vegetables</a>
       </li>
-      
       <%} %>
        <li class="nav-item">
         <a class="nav-link" href="ListVegetables.jsp">Vegetables</a>
@@ -43,6 +42,11 @@ String role=(String)session.getAttribute("ROLE");
      <%  if(role!=null && role.equalsIgnoreCase("admin")){ %>
       <li class="nav-item active">
         <a class="nav-link" href="#">Welcome <%=role %></a>
+      </li>
+      <%} %>
+      <%if (userEmail != null){ %>
+      <li class="nav-item">
+        <a class="nav-link" href="orderDetails.jsp">Cart</a>
       </li>
       <%} %>
       <li class="nav-item">
