@@ -19,10 +19,10 @@
 			<label for="vegetableName">Vegetable Name : </label> <input
 				type="text" name="vegetableName" value=<%=vegetableName%> required
 				autofocus readonly /> <br> <br> <label
-				for="vegetablePrice">Vegetable Price : </label> <input type="text"
+				for="vegetablePrice">Vegetable Price(Rs.) : </label> <input type="text"
 				name="vegetablePrice" id="rate" value=<%=vegetablePrice%> required
 				autofocus readonly /> <br> <br> <label
-				for="vegetableQuantity">Vegetable Quantity : </label> <input
+				for="vegetableQuantity">Vegetable Quantity(kg) : </label> <input
 				type="text" name="vegetableQuantity" id="quantity" required
 				autofocus />
 			<button type="button" onclick="calculatetotalPrice()">get price</button>
